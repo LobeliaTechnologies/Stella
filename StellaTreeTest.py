@@ -90,8 +90,8 @@ stellaTree.LoadData("@StellaTreeTest@N'th@World;").F("Stella")
 print("")
 
 
-print("Find Gulued data with '@StellaTreeTest@N'th@Character&/**&A/**/T;'")
-print(stellaTree.Find("@StellaTreeTest@N'th@Character&/**&A/**/T;"))
+print("Find Gulued data with '@StellaTreeTest@N'th@Character&/**&A/**/t;'")
+print(stellaTree.Find("@StellaTreeTest@N'th@Character&/**&A/**/t;"))
 print("")
 print("Find Gulued data with '/**&Eve/**;'")
 print(stellaTree.Find("/**&Eve/**;"))
