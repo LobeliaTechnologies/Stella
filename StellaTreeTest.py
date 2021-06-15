@@ -56,6 +56,16 @@ stellaTree.Glue(
         def SayHello():
             print("Hello, I'm %s" % R["name"])
     """)
+stellaTree.Glue(
+    "@StellaTreeTest@N'th@Character&Albert&Alcott",
+    {
+        "uuid": uuid.uuid4().urn,
+        "name": "Albert.Alcott"
+    },
+    extend=r"""
+        def SayHello():
+            print("Hello, I'm %s" % R["name"])
+    """)
 
 stellaTree.Glue(
     "@StellaTreeTest@N'th@World",
@@ -79,4 +89,12 @@ print("@StellaTreeTest@N'th@World; Call Function: F(\"Stella\")")
 stellaTree.LoadData("@StellaTreeTest@N'th@World;").F("Stella")
 print("")
 
-print("If you wanna remove Tree, just remove directories '@StellaTreeTest'")
+
+print("Find Gulued data with '@StellaTreeTest@N'th@Character&/**&A/**/T;'")
+print(stellaTree.Find("@StellaTreeTest@N'th@Character&/**&A/**/T;"))
+print("")
+print("Find Gulued data with '/**&Eve/**;'")
+print(stellaTree.Find("/**&Eve/**;"))
+print("")
+
+print("If you wanna remove Tree, just remove directories '@StellaTreeTest/**/'")
