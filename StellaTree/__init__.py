@@ -91,6 +91,9 @@ class StellaTree():
             traceback.print_exc()
             return False, DATA
 
+    def BurnNode(self, line):
+        os.makedirs(self.GeneratePath(line), exist_ok=True)
+
     def BakeNode(self, line):
         if(self.CheckNodes(re.findall(r"[@#&][^@#&]*", line), self.Definition)):
             os.makedirs(self.GeneratePath(line), exist_ok=True)
@@ -115,6 +118,19 @@ class StellaTree():
         if(line[-1] != ";"):
             line += ";"
         return [self.RevertLine(r) for r in glob.glob(self.GeneratePath(line.replace(";", "/__init__.py")), recursive=True)]
+    
+    def Slam(self, line, data, extend=None):
+        f = open("/".join([self.GeneratePath(line), "__init__.py"]),
+                    "w", encoding="utf-8")
+        f.write("R=")
+        if(type(data).__name__ == "str"):
+            f.write('"%s"' % DATA)
+        else:
+            f.write(data.__str__())
+        if(extend is not None):
+            f.write("\n")
+            f.write(textwrap.dedent(extend))
+        f.close()
 
     def Glue(self, line, data, extend=None):
         TF, DATA = self.CheckData(
