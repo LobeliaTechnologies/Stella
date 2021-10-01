@@ -118,13 +118,13 @@ class StellaTree():
         if(line[-1] != ";"):
             line += ";"
         return [self.RevertLine(r) for r in glob.glob(self.GeneratePath(line.replace(";", "/__init__.py")), recursive=True)]
-    
+
     def Slam(self, line, data, extend=None):
         f = open("/".join([self.GeneratePath(line), "__init__.py"]),
-                    "w", encoding="utf-8")
+                 "w", encoding="utf-8")
         f.write("R=")
         if(type(data).__name__ == "str"):
-            f.write('"%s"' % DATA)
+            f.write('"%s"' % data)
         else:
             f.write(data.__str__())
         if(extend is not None):
