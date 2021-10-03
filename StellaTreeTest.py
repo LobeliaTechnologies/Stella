@@ -75,7 +75,7 @@ stellaTree.Glue(
             print("Hello, %s." % P)
     """)
 
-loadData = stellaTree.LoadData("@StellaTreeTest@N'th@Character&Eve&Alcott;")
+loadData = stellaTree.LoadDataLib("@StellaTreeTest@N'th@Character&Eve&Alcott;")
 
 print("@StellaTreeTest@N'th@Character&Eve&Alcott; is... ")
 print("path:", stellaTree.GeneratePath(
@@ -86,7 +86,7 @@ loadData.SayHello()
 print("")
 
 print("@StellaTreeTest@N'th@World; Call Function: F(\"Stella\")")
-stellaTree.LoadData("@StellaTreeTest@N'th@World;").F("Stella")
+stellaTree.LoadDataFIO("@StellaTreeTest@N'th@World;")["F"]("Stella")
 print("")
 
 

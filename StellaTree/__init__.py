@@ -149,7 +149,7 @@ class StellaTree():
                 f.write(textwrap.dedent(extend))
             f.close()
 
-    def LoadData(self, line):
+    def LoadDataLib(self, line):
         nodes = re.findall(r"[@#&/][^@#&/]*", line.replace(";", ""))
         indexNode = []
         for node in nodes:
@@ -160,3 +160,12 @@ class StellaTree():
             else:
                 indexNode += [node]
         return importlib.import_module(".".join(indexNode))
+
+    def LoadDataFIO(self, line):  # for long line path
+        f = open("/".join([self.GeneratePath(line)[:-1], "__init__.py"]),
+                 "r", encoding="utf-8")
+        buf = f.read()
+        f.close()
+        R = {}
+        exec(buf, R)
+        return R
